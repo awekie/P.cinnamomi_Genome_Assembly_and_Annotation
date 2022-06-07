@@ -4,17 +4,18 @@
 guppy_basecaller --compress_fastq -i [input directory] -s [new output directory] -c [configeration file]
 
 #De multiplexing with Porechop
-#My exact command from within the dir containing the basecalled reads
-# for file in *.gz; do porechop -i ${file} -b binned; done
+#My exact command from within the dir containing the basecalled reads required concatonating all my different basecalled reads 
 
 for file in *.gz do porechop -i [input file(s)] -b [output directory]; done
 
-#Canu genome assembler perl script
+https://github.com/fenderglass/Flye
+#does it collapse the genome
+#do I need nanofilt?
+
+#Canu genome assembler perl script (not enough read coverage)- 
 #Due to not being able to add canu perl script to PATH I created a persistant enviromental variable to path where canu is installed
 #CANUSCRIPT=/home/aec77/canu-2.2/bin/canu  added to .bashrc 
 
 perl $CANUSCRIPT/canu -p 3795c3014_assembly1 genomeSize=1m stopOnLowCoverage=0.1 -nanopore BC01.fastq
 
-https://github.com/fenderglass/Flye
-#does it collapse the genome
-#do I need nanofilt?
+
