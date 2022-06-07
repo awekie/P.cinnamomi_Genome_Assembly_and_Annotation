@@ -14,3 +14,5 @@ for file in *.gz do porechop -i [input file(s)] -b [output directory]; done
 #CANUSCRIPT=/home/aec77/canu-2.2/bin/canu  added to .bashrc 
 
 perl $CANUSCRIPT/canu -p 3795c3014_assembly1 genomeSize=1m stopOnLowCoverage=0.1 -nanopore BC01.fastq
+
+https://github.com/fenderglass/Flye
