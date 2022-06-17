@@ -1,0 +1,21 @@
+#If minION output was not base called insitu run guppy base caller to get nucleotide sequences.
+#my exact command guppy_basecaller --compress_fastq -i fast5/ -s ../7_5_22/ -c dna_r9.4.1_450bps_hac.cfg
+
+guppy_basecaller --compress_fastq -i [input directory] -s [new output directory] -c [configeration file]
+
+#Due to basecalled reads being split over multiple fastq.gz files they required concatonating.
+#cat fastq_runid_b7df47db399cc0b5be5725a0015c8c3d28040254* > 3759_catted_reads
+
+#De multiplexing with Porechop
+porechop -i [input file(s)] -b [output directory]
+
+#My exact command from within the dir containing the basecalled reads
+#porechop -i 3759_catted_reads -b 3759_barcoded
+
+#nanoQC was run to check the quality of the basecalled, trimmed and demultiplexed reads 
+#create output directory with mkdir
+
+nanoQC -o [output_directory] barcoded_reads.fastq
+
+
+
