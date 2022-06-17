@@ -1,0 +1,25 @@
+#Canu genome assembler perl script
+https://github.com/marbl/canu
+
+#Requires coverage of +10
+#Create persistant enviromental variable by adding path to perl script to .bashrc 
+
+nano .bashrc
+VARIABLENAME=/path/to/canu/bin
+
+#my exact command
+#CANUSCRIPT=/home/aec77/canu-2.2/bin/canu  added to .bashrc 
+
+#now that Canu can be run from any directory change to the one containing your trimmed reads file
+
+cd /directory/containing/read_file.fastq
+
+#my exact command 
+#cd /home/aec77/3759c3014/3759c3014_base_called/pass
+
+#Run the canu assembler 
+
+perl $VARIABLENAME/canu -p output_file_name genomeSize=numberg/m/k -read_type trimmed_reads_file.fastq
+
+#My exact command 
+#perl $CANUSCRIPT/canu -p 3795c3014_assembly1 genomeSize=1m stopOnLowCoverage=0.1 -nanopore BC01.fastq
