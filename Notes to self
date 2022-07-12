@@ -8,3 +8,6 @@ might not work because of sudo, specify that you only want to install it in your
 python setup.py install --prefix /home/aec77/.local 
 
 ^^ This seems to work best when compiling from binaries, involves accessing C: from WSL and using rsync to push .tar(?).gz to the RCC
+- dont assume setup.py is the correct install method 
+
+cactus is install in Conda enviro
