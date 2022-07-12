@@ -11,3 +11,5 @@ python setup.py install --prefix /home/aec77/.local
 - dont assume setup.py is the correct install method 
 
 cactus is install in Conda enviro
+cactus requires the creation of a 'seqfile'
+
