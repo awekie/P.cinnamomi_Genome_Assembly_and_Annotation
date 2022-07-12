@@ -1,0 +1,10 @@
+Conda enviroment does not have setuptools ect
+"Raw script" based programs can be called to run everywhere by making a custom PATHVARIABLE and added it to the .bashrc file,> PATHVARIABLE/program
+PROGRAMSCRIPT = export path/to/program (?)
+
+.py = python script file, 
+python setup.py install (from with program directory ,
+might not work because of sudo, specify that you only want to install it in your portion of the RCC
+python setup.py install --prefix /home/aec77/.local 
+
+^^ This seems to work best when compiling from binaries, involves accessing C: from WSL and using rsync to push .tar(?).gz to the RCC
