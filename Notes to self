@@ -13,5 +13,6 @@ python setup.py install --prefix /home/aec77/.local
 cactus is install in Conda enviro
 cactus requires the creation of a 'seqfile'
 
-
 edit - EOL for creating txt files to run on RCC
+
+DmelChr4 REPET annotation step 2 not run on 'randomised chunks' (different to tutorial) -r
