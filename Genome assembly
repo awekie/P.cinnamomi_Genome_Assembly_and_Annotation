@@ -1,0 +1,33 @@
+#reference guided assembly using Ragtag -scaffold
+#ragtag is install in conda enviro2 
+#hard masking - gives capital N's throughout new fasta assembly file
+
+conda activate enviro2
+ragtag.py scaffold [Englebrecht_WGS_reference.fasta] 3759_flye_assembly.fasta
+
+#Transposable element masking using REPET
+#installed using docker 
+
+docker pull urgi/docker_vre_aio:v3.0
+docker image ls
+docker run -p 222:22 --name test -d urgi/docker_vre_aio
+ssh -p 222 centos@localhost
+y
+centos
+
+#my exact command: docker run -p 222:22 --name test -v /home/aec77:/home/centos/Doc -d urgi/docker_vre_aio
+docker run -p 222:22 --name test -v [home/location]:/home/centos/Doc -d urgi/docker_vre_aio
+docker ps
+docker start test
+docker exec -it test bash
+
+#copying files into container = docker cp assembly.fasta 69745cb76f68:/assembly.fasta
+#copying files out of container = docker cp 69745cb76f68:/home/centos/CONTAINER/PATH/HERE/file.name LOCAL/PATH/HERE 
+
+#set up configuration (.cfg) file using
+sudo vi TEdenovo.cfg
+
+launch_TEdenovo.py -P <project_name> -C <TEdenovo_configuration_file> -v <level_verbosity> > <redirection_log> & -  nohup launch_TEdenovo.py -P 3759_OG_1 -C TEdenovo.cfg > 3759_OG_maskedTE_7
+nohup TEannot.py -P DmelChr4 -C TEannot.cfg -S 1 >& step7.txt &
+ctrl + D = exit docker
+

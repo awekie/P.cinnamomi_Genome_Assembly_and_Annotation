@@ -1,5 +1,0 @@
-#reference guided assembly using Ragtag -scaffold
-#ragtag is install in conda enviro2 
-
-conda activate enviro2
-ragtag.py scaffold [Englebrecht_WGS_reference.fasta] 3759_flye_assembly.fasta
