@@ -28,6 +28,9 @@ docker exec -it test bash
 sudo vi TEdenovo.cfg
 
 launch_TEdenovo.py -P <project_name> -C <TEdenovo_configuration_file> -v <level_verbosity> > <redirection_log> & -  nohup launch_TEdenovo.py -P 3759_OG_1 -C TEdenovo.cfg > 3759_OG_maskedTE_7
+# skip step 6 in TEannot
 nohup TEannot.py -P DmelChr4 -C TEannot.cfg -S 1 >& step7.txt &
 ctrl + D = exit docker
+
+
 
