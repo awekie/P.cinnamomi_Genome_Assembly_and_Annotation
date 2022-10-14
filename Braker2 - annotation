@@ -1,0 +1,5 @@
+#installed in conda enviro3
+
+conda activate enviro3
+docker pull nanozoo/braker2
+docker run nanozoo/braker2 braker.pl - arguments
