@@ -32,5 +32,5 @@ launch_TEdenovo.py -P <project_name> -C <TEdenovo_configuration_file> -v <level_
 nohup TEannot.py -P DmelChr4 -C TEannot.cfg -S 1 >& step7.txt &
 ctrl + D = exit docker
 
-
+bedtools maskfasta [GFF file from REPET] [assembly from Ragtag.fasta] > new_assembly.fa
 
