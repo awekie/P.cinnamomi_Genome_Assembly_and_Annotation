@@ -23,3 +23,8 @@ Coley Tosto
 1.  Create a directory in the **mnt** folder `mkdir /mnt/d`
 2.  Mount the external drive to the directory you just created in the mnt folder (assume the drive shows in Windows as "D:") `mount -t drvfs d: /mnt/d`
 **If you need administration privileges use sudo in front of both commands**
+
+#Checking genome length
+cat file.fa | awk '$0 ~ ">" {if (NR > 1) {print c;} c=0;printf substr($0,2,100) "\t"; } $0 !~ ">" {c+=length($0);} END { print c; }' > tabbed_file.txt
+$ cat tabbed_file.txt | awk '{ sum+=$2} END {print sum}'
+
