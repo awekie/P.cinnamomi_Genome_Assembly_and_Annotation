@@ -16,6 +16,9 @@ cactus requires the creation of a 'seqfile'
 edit - EOL for creating txt files to run on RCC
 
 RAGTAG in inside conda enviro2
+post ragtag correction and scaffolding there will be more contigs and a different genome length (with extra Ns because of alignment mapping). New contig heads will contain "+"s 
+to remove these use
+cat old.fasta | sed 's/\+(OR OTHER REGEX)/(REPLACEMENT)/g' > new.fasta
 
 
 Coley Tosto
