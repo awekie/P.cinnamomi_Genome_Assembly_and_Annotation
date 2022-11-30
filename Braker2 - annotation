@@ -2,3 +2,4 @@
 
 conda activate enviro3
 $BRAKERSCIPT/braker.pl --genome [genome.fa] --bam [RNAseq.bam] --AUGUSTUS_CONFIG_PATH=/home/aec77/Augustus/config
+BRAKER CALL: /home/aec77/BRAKER/scripts/braker.pl --genome 3759_OG_basecalled_barcatted_assembled_scaffold_TEmasked.fasta --softmasking --AUGUSTUS_ab_initio
