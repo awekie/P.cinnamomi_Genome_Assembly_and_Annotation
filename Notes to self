@@ -35,3 +35,6 @@ $ cat tabbed_file.txt | awk '{ sum+=$2} END {print sum}'
 
 samtools faidx input.fa
 cut -f1,2 input.fa.fai > sizes.genome
+
+#list all blast databases in path
+blastdbcmd -list [path]
