@@ -39,3 +39,7 @@ cut -f1,2 input.fa.fai > sizes.genome
 #list all blast databases in path
 blastdbcmd -list [path]
 E.G blastdbcmd -recursive  -list aec77/
+
+Paths to all masked genomes WGS (prior to braker2 CDS annotation) are stored as enviromental varialables.
+E.G $GENOME_3034 =/home/3034/3034_flye1/assembly/masking1/3034_scaffolded_masked.fasta
+These paths were established early 2024 so edits to fundamental directory structure will break them (3750 or 3759c3034)
