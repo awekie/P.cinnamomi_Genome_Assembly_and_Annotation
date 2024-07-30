@@ -43,3 +43,14 @@ E.G blastdbcmd -recursive  -list aec77/
 Paths to all masked genomes WGS (prior to braker2 CDS annotation) are stored as enviromental varialables.
 E.G $GENOME_3034 =/home/3034/3034_flye1/assembly/masking1/3034_scaffolded_masked.fasta
 These paths were established early 2024 so edits to fundamental directory structure will break them (3750 or 3759c3034)
+
+When blasting original genomes for CRN1, CRN2, COX1 and ITS the crinklers were not well conserved, lots of parital hits. File pipeline:
+makeblastdb -in path/to/braker2/augustus.ab_initio.codingseq -title augustus.ab_initio.codingseq -dbtype nucl -parse_seqids
+#Creates a blastdb in that specific directory so each genome is run induvidually, .codingseq because post annotation = CDS which should contain these genes EXCEPT ITS!
+#Therefore ensure blast query fasta is either in directory or an easy variable
+blastn -query CNM_CRN1.fasta -db augustus.ab_initio.codingseq -out 478_CRN1_blastout.tab -outfmt "6 qseqid sseqid sstart send length mismatch pident bitscore evalue"
+#^Contained in FINAL_CRN_blast.sh or something similar, output will be tab file contain coordinates of sequence to extract
+blastdbcmd -db augustus.ab_initio.codingseq -dbtype nucl -out extracted_478_CRN1.fasta -range 1-161 -outfmt %f -entry g14853.t1
+#^Contained in extract_fasta_blastcmd.sh
+cat extracted_478_CRN1.fasta
+
