@@ -54,7 +54,7 @@ blastdbcmd -db augustus.ab_initio.codingseq -dbtype nucl -out extracted_478_CRN1
 #^Contained in extract_fasta_blastcmd.sh
 cat extracted_478_CRN1.fasta
 
-BWA aligner (https://github.com/lh3/bwa)
+BWA aligner (https://github.com/lh3/bwa) run from inside the bwa directory
 ./bwa index path/togenome/3750_masked.fasta
 ./bwa mem ref.fa read-se.fq.gz | gzip -3 > aln-se.sam.gz
 ./bwa mem ref.fa read1.fq read2.fq | gzip -3 > aln-pe.sam.gz
