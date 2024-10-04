@@ -1,0 +1,20 @@
+#installed in detached docker container, source: teambraker/braker
+#files will need copying in and out of container
+#to use container via exec you will have different username
+#might need sudo
+
+docker pull teambraker/braker3
+docker image ls
+docker run --name BRAKER -d --user 100:100 -it teambraker/braker3:latest bash
+
+#you should now be in an almost empty directory where braker.pl can be run from
+exit
+docker ps
+#this will list the containers, including BRAKER and it's container ID, copy that
+#copying from local into container, run from local:
+docker cp thing_to_transfer.file CONTAINER_ID_NUMBER:/home/newusername/thing_to_transfer.file
+#copying from container into local, run from local
+docker cp  CONTAINER_ID_NUMBER:/home/newusername/thing_to_transfer.file /home/localuser/thing_to_transfer.file
+
+
+
