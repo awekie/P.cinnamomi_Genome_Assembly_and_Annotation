@@ -1,7 +1,7 @@
 #installed in detached docker container, source: teambraker/braker
 #files will need copying in and out of container
 #to use container via exec you will have different username
-#might need sudo
+#might need sudo, top of braker.log contains the command call 
 
 docker pull teambraker/braker3
 docker image ls
