@@ -5,6 +5,11 @@
 conda activate enviro2
 ragtag.py scaffold [Englebrecht_WGS_reference.fasta] 3759_flye_assembly.fasta
 
+#Before repeat masking you want need to clean the fasta file headers from "+" and "|".
+cat old.fasta | sed 's/\+/:/g' > new.fasta
+cat new.fasta | sed 's/|/_/g' > newer.fasta
+
+
 #Transposable element masking using REPET
 #installed using docker 
 
@@ -21,16 +26,27 @@ docker ps
 docker start test
 docker exec -it test bash
 
-#copying files into container = docker cp assembly.fasta 69745cb76f68:/assembly.fasta
+#copying files into container = docker cp newer.fasta 69745cb76f68:/newer.fasta
 #copying files out of container = docker cp 69745cb76f68:/home/centos/CONTAINER/PATH/HERE/file.name LOCAL/PATH/HERE 
 
 #set up configuration (.cfg) file using
 sudo vi TEdenovo.cfg
 
 launch_TEdenovo.py -P <project_name> -C <TEdenovo_configuration_file> -v <level_verbosity> > <redirection_log> & -  nohup launch_TEdenovo.py -P 3759_OG_1 -C TEdenovo.cfg > 3759_OG_maskedTE_7
+#parse clustering results by moving the the Project_name_refTEs.fa file to the top directory
+cd ~/Project_name/Project_name_Blaster_GrpRecPil_Map_TEclassif_Filtered_MCL
+gawk -F"_MCL|_Project_name" '{if(/>/){gsub(">","",$0);print "MCL\t"$2"\t"$1"_Chig"$3}}' Project_name_sim_denovoLibTEs_filtered_MCL.fa \
+| sort -nk2,2 \
+| gawk -F"\t" '{print $1$2"\t"$3}' > Project_name_sim_denovoLibTEs_filtered_MCL.lst
+
 # skip step 6 in TEannot
-nohup TEannot.py -P DmelChr4 -C TEannot.cfg -S 1 >& step7.txt &
+nohup TEannot.py -P Project_name -C TEannot.cfg -S 1 >& step7.txt &
+cd ~/Project_name/TEannot 
+cat Project_name_GFF3chr/*.gff3 |grep -v "##" > Project_name_refTEs.gff 
+rm -r Project_name_GFF3chr Project_name_gameXMLchr
+
+#copy Project_name_refTEs.gff out of docker to be used for masking in main vm
 ctrl + D = exit docker
 
-bedtools maskfasta [GFF file from REPET] [assembly from Ragtag.fasta] > new_assembly.fa
+bedtools maskfasta -bed [GFF file from REPET] -fi [newer.fasta] -fo [assembly_softmasked.fa]
 
