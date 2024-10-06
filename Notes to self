@@ -40,6 +40,14 @@ cut -f1,2 input.fa.fai > sizes.genome
 blastdbcmd -list [path]
 E.G blastdbcmd -recursive  -list aec77/
 
+#signalP is installed inside the python enviroment 'env'
+cd ~
+python -m venv env
+source env/bin/activate
+signalp6 -h
+nohup signalp6 --fastafile 3750_braker.aa --output_dir signalP --format all --organism euk --mode slow-sequential -bs 20 -wp 100 > sig.out &
+
+
 Paths to all masked genomes WGS (prior to braker2 CDS annotation) are stored as enviromental varialables.
 E.G $GENOME_3034 =/home/3034/3034_flye1/assembly/masking1/3034_scaffolded_masked.fasta
 These paths were established early 2024 so edits to fundamental directory structure will break them (3750 or 3759c3034)
