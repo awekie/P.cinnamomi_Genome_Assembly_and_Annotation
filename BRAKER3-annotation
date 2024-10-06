@@ -5,7 +5,9 @@
 
 docker pull teambraker/braker3
 docker image ls
-docker run --name BRAKER -d --user 100:100 -it teambraker/braker3:latest bash
+docker start BRAKER
+docker exec -it BRAKER bash
+braker.pl --genome 3750_softmasked.fasta -rnaseq_sets_dir=work/ --rnaseq_sets_ids=SRR13009245,SRR13009246,SRR13009247 --hints=work/prothint_augustus.gff
 
 #you should now be in an almost empty directory where braker.pl can be run from
 exit
