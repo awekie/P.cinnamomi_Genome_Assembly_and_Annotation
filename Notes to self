@@ -27,6 +27,10 @@ Coley Tosto
 2.  Mount the external drive to the directory you just created in the mnt folder (assume the drive shows in Windows as "D:") `mount -t drvfs d: /mnt/d`
 **If you need administration privileges use sudo in front of both commands**
 
+#Checking number of TEs post REPET
+find the PROJECTNAME_REPET_chr_allTEs_nr_noSSR_join_path.globalAnnotStatsPerTE.txt and the first line = #of TEs
+E>G 'nb of sequences:'
+
 #Checking genome length
 cat file.fa | awk '$0 ~ ">" {if (NR > 1) {print c;} c=0;printf substr($0,2,100) "\t"; } $0 !~ ">" {c+=length($0);} END { print c; }' > tabbed_file.txt
 $ cat tabbed_file.txt | awk '{ sum+=$2} END {print sum}'
