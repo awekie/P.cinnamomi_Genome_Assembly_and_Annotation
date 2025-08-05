@@ -1,0 +1,10 @@
+#Structural annotation of masked WGS fasta files was done with BRAKER3 with protein and RNAseq data.
+#Protein data was sourced from OrthoDB using the Stramenopiles.fa.gz md5sum: eab4b468d1fcc91c8477d04c797e37aa dataset
+#RNA Illumina sequencing data produced by Engelbercht et al. 2021 SRA accession number:SAMN16706908
+nohup braker.pl --genome 3750_softmasked.fasta -rnaseq_sets_dir=. --rnaseq_sets_ids=SRR13009245,SRR13009246,SRR13009247 --prot_seq=Stramenopiles.fa --threads 30 > braker.out &
+
+#Functional annotation of the effectome was done with SignalP v6 and EffectorP v3.
+#CDS fasta files were run on the slow-sequential mode of SignalP with with 'eukarya’ organism parameter.
+#Signal-peptide containing proteins were further filtered by EffectorP and blasted against the 'nr' database.
+
+#Blastp output table files in format '6' were imported into Rstudio for filtering
