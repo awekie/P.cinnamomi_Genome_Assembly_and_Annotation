@@ -1,5 +1,0 @@
-#installed in conda enviro3
-
-conda activate enviro3
-$BRAKERSCRIPT/braker.pl --genome [genome.fa] --esmode --softmasking --AUGUSTUS_CONFIG_PATH=/home/aec77/Augustus/config
-BRAKER CALL: /home/aec77/BRAKER/scripts/braker.pl --genome 3759_OG_basecalled_barcatted_assembled_scaffold_TEmasked.fasta --esmode --softmasking --AUGUSTUS_ab_initio
